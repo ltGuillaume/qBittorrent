@@ -157,7 +157,10 @@ AddNewTorrentDialog::AddNewTorrentDialog(const BitTorrent::AddTorrentParams &inP
     connect(editHotkey, &QShortcut::activated, this, &AddNewTorrentDialog::renameSelectedFile);
     connect(m_ui->contentTreeView, &QAbstractItemView::doubleClicked, this, &AddNewTorrentDialog::renameSelectedFile);
 
-    m_ui->buttonBox->button(QDialogButtonBox::Ok)->setFocus();
+    if (m_ui->comboTTM->currentIndex() == 1)
+        m_ui->categoryComboBox->setFocus();
+    else
+        m_ui->buttonBox->button(QDialogButtonBox::Ok)->setFocus();
 }
 
 AddNewTorrentDialog::~AddNewTorrentDialog()
